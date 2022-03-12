@@ -22,6 +22,9 @@ function Listing() {
         empty: true
     });
 
+    const handlePageChange = (newPageNumber : number) => {
+        setPageNumber(newPageNumber);
+    }
     useEffect(() => {
         axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=id`)
             .then(response => {
@@ -32,7 +35,8 @@ function Listing() {
 
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange}/>
+            
 
             <div className="container">
                 <div className="row">
